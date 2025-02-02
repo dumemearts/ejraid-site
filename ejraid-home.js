@@ -1,19 +1,3 @@
-// MARQUEE DOUBLE
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section-bottom-wrapper",
-    start: "top bottom", // Starts when section enters viewport
-    end: "bottom top", // Ends when leaving viewport
-    scrub: 1, // Smooth motion
-  },
-});
-
-tl.to(".header-image-list-top", { xPercent: 25, ease: "none" }, 0).to(
-  ".header-image-list-bottom",
-  { xPercent: -25, ease: "none" },
-  0
-);
-
 // MARQUEE 2
 let tickerTl = gsap.timeline({
   scrollTrigger: {
