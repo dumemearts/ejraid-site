@@ -1,13 +1,3 @@
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin);
-gsap.registerPlugin(ScrambleTextPlugin3);
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollSmoother);
-
-ScrollTrigger.defaults({
-  markers: false,
-});
-
 // MARQUEE DOUBLE
 let tl = gsap.timeline({
   scrollTrigger: {
