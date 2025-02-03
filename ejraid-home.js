@@ -1,3 +1,21 @@
+// MARQUEE DOUBLE
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".section-bottom-wrapper",
+    start: "top bottom", // Starts when section enters viewport
+    end: "bottom top", // Ends when leaving viewport
+    scrub: 1, // Smooth motion
+  },
+});
+
+tl.to(".header-image-list-top", { xPercent: 25, ease: "none" }, 0).to(
+  ".header-image-list-bottom",
+  { xPercent: -25, ease: "none" },
+  0
+);
+
+
+
 // MARQUEE 2
 let tickerTl = gsap.timeline({
   scrollTrigger: {
@@ -10,10 +28,26 @@ let tickerTl = gsap.timeline({
 
 tickerTl.to(".section-ticker", { xPercent: -25, ease: "none" });
 
+
+// MARQUEE 3
+let tickerTl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".ticker-section",
+    start: "top bottom", // Starts when it enters the viewport
+    end: "bottom top", // Ends when leaving the viewport
+    scrub: 1, // Keeps motion smooth and linked to scroll
+  },
+});
+
+tickerTl2.to(".ticker-section", { xPercent: 25, ease: "none" });
+
+
+
+
 // NAVLINK HOVER
 gsap.utils.toArray(".navbar-link-text").forEach((link) => {
   link.addEventListener("mouseenter", () => {
-    gsap.to(link, { color: "#DBFE02", duration: 0.3, ease: "power2.out" });
+    gsap.to(link, { color: "#52DB83", duration: 0.3, ease: "power2.out" });
   });
   link.addEventListener("mouseleave", () => {
     if (!link.classList.contains("current")) {
@@ -21,7 +55,11 @@ gsap.utils.toArray(".navbar-link-text").forEach((link) => {
     }
   });
 });
-gsap.set(".navbar-link-text.current", { color: "#DBFE02" });
+gsap.set(".navbar-link-text.current", { color: "#52DB83" });
+
+
+
+
 
 // STICKY CIRCLE
 ScrollTrigger.matchMedia({
@@ -66,30 +104,93 @@ ScrollTrigger.matchMedia({
   },
 });
 
-// NUMBER COUNTER
-function animateCounter() {
-  gsap.fromTo(
-    ".counter-text",
-    { innerHTML: 0 },
-    {
-      innerHTML: 13500,
-      duration: 4,
+
+
+
+// NUMBER COUNTER 1
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  function animateCounter() {
+    let counter = { value: 0 }; // Proxy object for animation
+
+    gsap.to(counter, {
+      value: 215, // Target number
+      duration: 3,
       ease: "power1.out",
       scrollTrigger: {
-        trigger: ".section-bottom-wrapper",
+        trigger: ".counter-card.is--3",
+        start: "top 75%",
+        toggleActions: "restart none none none",
+      },
+      onUpdate: function () {
+        document.querySelector(".counter-text.is--naira").innerHTML =
+          "" + Math.floor(counter.value).toLocaleString();
+      },
+    });
+  }
+
+  animateCounter();
+});
+
+
+// NUMBER COUNTER 2
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  function animateCounter() {
+    let counter = { value: 0 }; // Proxy object for animation
+
+    gsap.to(counter, {
+      value: 50, // Target number
+      duration: 3,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".counter-card.is--2",
+        start: "top 75%",
+        toggleActions: "restart none none none",
+      },
+      onUpdate: function () {
+        document.querySelector(".counter-text.is--community").innerHTML =
+          "" + Math.floor(counter.value).toLocaleString();
+      },
+    });
+  }
+
+  animateCounter();
+});
+
+
+
+
+// NUMBER COUNTER 3
+function animateCounter() {
+  gsap.fromTo(
+    ".counter-text.is--meals",
+    { innerHTML: 0 },
+    {
+      innerHTML: 500,
+      duration: 3,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".counter-card.is--1",
         start: "top 75%",
         toggleActions: "restart none none none",
       },
       snap: { innerHTML: 1 },
       onUpdate: function () {
-        document.querySelector(".counter-text").innerHTML =
-          "$" + Math.floor(this.targets()[0].innerHTML).toLocaleString();
+        document.querySelector(".counter-text.is--meals").innerHTML =
+          "" + Math.floor(this.targets()[0].innerHTML).toLocaleString();
       },
     }
   );
 }
 
 animateCounter();
+
+
+
+
 
 // HERO ANIMATION
 let heroTl = gsap.timeline({ delay: 3.5 }); // 4-second delay for loader
@@ -105,7 +206,7 @@ heroTl.from(".navbar-banner", {
 // 2️⃣ Staggered animations: .pill-regular → .hero-letter → .h1-subtext → .pill-tiny
 heroTl
   .from(
-    ".pill-regular",
+    ".pill-large",
     {
       opacity: 0,
       scale: 0.9,
@@ -139,7 +240,7 @@ heroTl
   ) // Plays after `.hero-letter`
 
   .from(
-    ".pill-tiny",
+    ".button-group",
     {
       opacity: 0,
       scale: 0.9,
@@ -173,6 +274,10 @@ heroTl.from(
   "-=0.2"
 );
 
+
+
+
+
 // STAR ROTATE
 gsap.to(".star-vector,.star-icon", {
   rotation: 360,
@@ -203,6 +308,10 @@ gsap.to(".cta-background-image", {
   },
 });
 
+
+
+
+
 // FOOTER ANIMATION
 gsap.from(".footer-letter", {
   y: 100,
@@ -218,14 +327,136 @@ gsap.from(".footer-letter", {
   },
 });
 
-document.querySelector(".button").addEventListener("mouseenter", function () {
-  gsap.to(".button-text", { 
-    scrambleText: { 
-      chars: "uppercase", 
-      text: "ALL SYSTEMS READY", 
-      speed: 1, 
-      delimiter: "", 
-    }, 
-    duration: 1 
+
+
+
+// PARAGRAPH SPLIT TEXT 
+const splitTypes = document.querySelectorAll('.scroll-highlight');
+splitTypes.forEach((char,i) => {
+  const text = new SplitType(char, {types: ['chars','words']});
+  gsap.from(text.chars, {
+    scrollTrigger: {
+      trigger: char,
+      start: 'top 80%',
+      end: 'top 20%',
+      scrub: true,
+    },
+    opacity: 0.2,
+    stagger: 0.1,
+  })
+});
+
+
+
+
+
+// HEADING SPLIT TEXT
+let windowWidth = window.outerWidth;
+
+$(".split-text").each(function (index) {
+  let myText = $(this);
+  let mySplitText;
+  function createSplits() {
+    mySplitText = new SplitText(myText, {
+      type: "chars,words,lines",
+      charsClass: "split-chars",
+      wordsClass: "split-words",
+      linesClass: "split-lines"
+    });
+  }
+  createSplits();
+  $(window).resize(function () {
+  	if (window.outerWidth !== windowWidth) {
+    	mySplitText.revert();
+			location.reload();
+    }
+    windowWidth = window.outerWidth;
   });
 });
+
+gsap.registerPlugin(ScrollTrigger);
+
+function createTextAnimations() {
+  // Line Animation
+  $(".line-animation").each(function (index) {
+    let triggerElement = $(this);
+    let myText = $(this).find(".split-text");
+    let targetElement = $(this).find(".split-lines");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        // trigger element - viewport
+        start: "top bottom",
+        end: "bottom top",
+        toggleActions: "restart none none none"
+      }
+    });
+    tl.from(targetElement, {
+      duration: 0.5,
+      y: "150%",
+      rotationX: -90,
+      opacity: 0,
+      ease: "power1.inOut",
+      stagger: {
+        amount: 0.4,
+        from: "0"
+      }
+    });
+  });
+  // Word Animation
+  $(".word-animation").each(function (index) {
+    let triggerElement = $(this);
+    let myText = $(this).find(".split-text");
+    let targetElement = $(this).find(".split-words");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        // trigger element - viewport
+        start: "top bottom",
+        end: "bottom top",
+        toggleActions: "restart none none none"
+      }
+    });
+    tl.from(targetElement, {
+      duration: 0.3,
+      y: "80%",
+      rotationX: -90,
+      opacity: 0,
+      ease: "power1.inOut",
+      stagger: {
+        amount: 0.9,
+        from: "0"
+      }
+    });
+  });
+  // Letter Animation
+  $(".letter-animation").each(function (index) {
+    let triggerElement = $(this);
+    let myText = $(this).find(".split-text");
+    let targetElement = $(this).find(".split-chars");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        // trigger element - viewport
+        start: "top bottom",
+        end: "bottom top",
+        toggleActions: "restart none none none"
+      }
+    });
+    tl.from(targetElement, {
+      duration: 0.5,
+      y: "60%",
+      opacity: 0,
+      rotationX: -90,
+      ease: "power1.inOut",
+      stagger: {
+        amount: 0.7,
+        from: "0"
+      }
+    });
+  });
+}
+createTextAnimations();
