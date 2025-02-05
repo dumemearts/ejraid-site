@@ -38,7 +38,7 @@ heroTl
     "+=0.2"
   )
   .from(
-    ".heading-style-h1",
+    ".max-width-custom.is--1",
     {
       y: 50,
       opacity: 0,
@@ -70,18 +70,6 @@ heroTl
     },
     "-=0.3"
   );
-
-// 4️⃣ .sticky-circle-wrap pops up from the bottom as the last animation
-heroTl.from(
-  ".hero-right-image-wrapper",
-  {
-    y: 50,
-    opacity: 0,
-    duration: 0.7,
-    ease: "power2.out",
-  },
-  "-=0.2"
-);
   
   
   
