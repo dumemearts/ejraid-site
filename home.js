@@ -15,7 +15,7 @@ gsap.set(".navbar-link-text.current", { color: "#52DB83" });
 
 
 // HERO ANIMATION
-let heroTl = gsap.timeline({ delay: 3.5 }); // 4-second delay for loader
+let heroTl = gsap.timeline({ delay: 1.2 }); // 1.2-second delay for loader
 
 // 1️⃣ Navbar banner fades in from the top
 heroTl.from(".navbar-banner", {
@@ -24,78 +24,6 @@ heroTl.from(".navbar-banner", {
   duration: 0.8,
   ease: "power2.out",
 });
-
-// 2️⃣ Staggered animations: .pill-regular → .hero-letter → .h1-subtext → .pill-tiny
-heroTl
-  .from(
-    ".pill-large",
-    {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "+=0.2"
-  )
-
-  .from(
-    ".hero-letter",
-    {
-      y: 50,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.05,
-    },
-    "-=0.3"
-  ) // Ensuring stagger effect applies to `.hero-letter`
-
-  .from(
-    ".h1-subtext",
-    {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "-=0.1"
-  ) // Plays after `.hero-letter`
-
-  .from(
-    ".button-group",
-    {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "-=0.3"
-  );
-
-// 3️⃣ header-content-right enters smoothly from the right
-heroTl.from(
-  ".header-content-right",
-  {
-    opacity: 0,
-    y: 20,
-    duration: 0.6,
-    ease: "power3.out",
-  },
-  "-=0.3"
-);
-
-// 4️⃣ .sticky-circle-wrap pops up from the bottom as the last animation
-heroTl.from(
-  ".sticky-circle-wrap",
-  {
-    y: 50,
-    opacity: 0,
-    duration: 0.7,
-    ease: "power2.out",
-  },
-  "-=0.2"
-);
-
 
 
 
