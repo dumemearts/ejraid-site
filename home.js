@@ -71,9 +71,9 @@ heroTl
     "-=0.3"
   );
 
-// 3️⃣ header-content-right enters smoothly from the right
+// 3️⃣ hero-content-right enters smoothly from the right
 heroTl.from(
-  ".header-content-right",
+  ".hero-content-right",
   {
     opacity: 0,
     y: 20,
