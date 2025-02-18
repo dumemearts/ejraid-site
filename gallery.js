@@ -27,7 +27,7 @@ heroTl.from(".navbar-banner", {
 
 
 // GALLERY 1
-let t1 = gsap.timeline({
+let firsttl  = gsap.timeline({
     scrollTrigger: {
       trigger: ".section-gallery-education",
       start: "top bottom", // Starts when section enters viewport
@@ -36,14 +36,14 @@ let t1 = gsap.timeline({
     },
   });
   
-  tl.to(".marquee--1", { xPercent: 25, ease: "none" }, 0).to(
+  firsttl.to(".marquee--1", { xPercent: 25, ease: "none" }, 0).to(
     ".marquee--2",
     { xPercent: -25, ease: "none" },
     0
 );
 
 // GALLERY 2
-let t2 = gsap.timeline({
+let secondtl = gsap.timeline({
   scrollTrigger: {
     trigger: ".section-gallery-women",
     start: "top bottom", // Starts when section enters viewport
@@ -52,14 +52,14 @@ let t2 = gsap.timeline({
   },
 });
 
-t2.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
+secondtl.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
   ".marquee--4",
   { xPercent: -25, ease: "none" },
   0
 );
 
 // GALLERY 3
-let t3 = gsap.timeline({
+let thirdtl = gsap.timeline({
   scrollTrigger: {
     trigger: ".section-gallery-youth",
     start: "top bottom", // Starts when section enters viewport
@@ -68,7 +68,7 @@ let t3 = gsap.timeline({
   },
 });
 
-t3.to(".marquee--5", { xPercent: 25, ease: "none" }, 0).to(
+thirdtl.to(".marquee--5", { xPercent: 25, ease: "none" }, 0).to(
   ".marquee--6",
   { xPercent: -25, ease: "none" },
   0
