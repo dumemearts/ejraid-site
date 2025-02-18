@@ -27,7 +27,7 @@ heroTl.from(".navbar-banner", {
 
 
 // GALLERY 1
-let tl = gsap.timeline({
+let t1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".section-gallery-education",
       start: "top bottom", // Starts when section enters viewport
@@ -52,7 +52,7 @@ let t2 = gsap.timeline({
   },
 });
 
-tl.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
+t2.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
   ".marquee--4",
   { xPercent: -25, ease: "none" },
   0
@@ -68,7 +68,7 @@ let t3 = gsap.timeline({
   },
 });
 
-tl.to(".marquee--5", { xPercent: 25, ease: "none" }, 0).to(
+t3.to(".marquee--5", { xPercent: 25, ease: "none" }, 0).to(
   ".marquee--6",
   { xPercent: -25, ease: "none" },
   0
