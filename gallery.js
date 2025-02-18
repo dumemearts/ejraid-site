@@ -26,24 +26,53 @@ heroTl.from(".navbar-banner", {
 
 
 
-// MARQUEE DOUBLE
+// GALLERY 1
 let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".section-gallery",
+      trigger: ".section-gallery.is--education",
       start: "top bottom", // Starts when section enters viewport
       end: "bottom top", // Ends when leaving viewport
       scrub: 1, // Smooth motion
     },
   });
   
-  tl.to(".header-image-list-top", { xPercent: 25, ease: "none" }, 0).to(
-    ".header-image-list-bottom",
+  tl.to(".marquee--1", { xPercent: 25, ease: "none" }, 0).to(
+    ".marquee--2",
     { xPercent: -25, ease: "none" },
     0
 );
 
+// GALLERY 2
+let t2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".section-gallery.is--women",
+    start: "top bottom", // Starts when section enters viewport
+    end: "bottom top", // Ends when leaving viewport
+    scrub: 1, // Smooth motion
+  },
+});
 
+tl.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
+  ".marquee--4",
+  { xPercent: -25, ease: "none" },
+  0
+);
 
+// GALLERY 3
+let t3 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".section-gallery.is--youth",
+    start: "top bottom", // Starts when section enters viewport
+    end: "bottom top", // Ends when leaving viewport
+    scrub: 1, // Smooth motion
+  },
+});
+
+tl.to(".marquee--5", { xPercent: 25, ease: "none" }, 0).to(
+  ".marquee--6",
+  { xPercent: -25, ease: "none" },
+  0
+);
 
 
 // PARAGRAPH SPLIT TEXT 
