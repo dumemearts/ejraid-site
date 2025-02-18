@@ -24,71 +24,12 @@ heroTl.from(".navbar-banner", {
   ease: "power2.out",
 });
 
-// 2️⃣ Staggered animations: .pill-regular → .hero-letter → .h1-subtext → .pill-tiny
-heroTl
-    .from(
-    ".pill-large",
-    {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "+=0.2"
-  )
-  .from(
-    ".heading-style-h1",
-    {
-      y: 50,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.05,
-    },
-    "-=0.3"
-  ) // Ensuring stagger effect applies to `.hero-letter`
-
-  .from(
-    ".text-size-regular",
-    {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "-=0.1"
-  ) // Plays after `.hero-letter`
-
-  .from(
-    ".button-group",
-    {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.6,
-      ease: "power2.out",
-    },
-    "-=0.3"
-  );
-
-// 4️⃣ .sticky-circle-wrap pops up from the bottom as the last animation
-heroTl.from(
-  ".hero-right-image-wrapper",
-  {
-    y: 50,
-    opacity: 0,
-    duration: 0.7,
-    ease: "power2.out",
-  },
-  "-=0.2"
-);
-  
-  
 
 
 // MARQUEE DOUBLE
 let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".section-bottom-wrapper",
+      trigger: ".section-gallery",
       start: "top bottom", // Starts when section enters viewport
       end: "bottom top", // Ends when leaving viewport
       scrub: 1, // Smooth motion
