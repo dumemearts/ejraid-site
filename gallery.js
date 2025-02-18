@@ -29,7 +29,7 @@ heroTl.from(".navbar-banner", {
 // GALLERY 1
 let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".section-gallery.is--education",
+      trigger: ".section-gallery-education",
       start: "top bottom", // Starts when section enters viewport
       end: "bottom top", // Ends when leaving viewport
       scrub: 1, // Smooth motion
@@ -45,7 +45,7 @@ let tl = gsap.timeline({
 // GALLERY 2
 let t2 = gsap.timeline({
   scrollTrigger: {
-    trigger: ".section-gallery.is--women",
+    trigger: ".section-gallery-women",
     start: "top bottom", // Starts when section enters viewport
     end: "bottom top", // Ends when leaving viewport
     scrub: 1, // Smooth motion
@@ -61,7 +61,7 @@ tl.to(".marquee--3", { xPercent: 25, ease: "none" }, 0).to(
 // GALLERY 3
 let t3 = gsap.timeline({
   scrollTrigger: {
-    trigger: ".section-gallery.is--youth",
+    trigger: ".section-gallery-youth",
     start: "top bottom", // Starts when section enters viewport
     end: "bottom top", // Ends when leaving viewport
     scrub: 1, // Smooth motion
