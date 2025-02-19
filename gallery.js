@@ -1,7 +1,7 @@
 // NAVLINK HOVER
 gsap.utils.toArray(".navbar-link-text").forEach((link) => {
 	link.addEventListener("mouseenter", () => {
-	  gsap.to(link, { color: "#52DB83", duration: 0.3, ease: "power2.out" });
+	  gsap.to(link, { color: "#24E669", duration: 0.3, ease: "power2.out" });
 	});
 	link.addEventListener("mouseleave", () => {
 	  if (!link.classList.contains("current")) {
@@ -9,7 +9,7 @@ gsap.utils.toArray(".navbar-link-text").forEach((link) => {
 	  }
 	});
   });
-gsap.set(".navbar-link-text.current", { color: "#52DB83" });
+gsap.set(".navbar-link-text.current", { color: "#24E669" });
 
 
 
