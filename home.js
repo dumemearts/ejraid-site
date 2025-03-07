@@ -15,50 +15,23 @@ gsap.set(".navbar-link-text.current", { color: "#24E669" });
 
 
 
+// HERO ANIMATION DELAY
+document.addEventListener("DOMContentLoaded", function () {
+  let timeout;
 
+  document.querySelector(".hero-main-wrapper.align-center").addEventListener("mousemove", function () {
+    clearTimeout(timeout); // Reset the timer if mouse moves again
 
-// STICKY CIRCLE
-ScrollTrigger.matchMedia({
-  "(min-width: 990px)": function () {
-    $(".sticky-circle-wrap").each(function (index) {
-      let triggerElement = $(this);
-      let targetElement = $(".sticky-circle-element");
-
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: triggerElement,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
+    timeout = setTimeout(() => {
+      gsap.to(".hero-main-wrapper.align-center", {
+        scale: 1.05, // Example effect (you can change this)
+        duration: 1, 
+        ease: "power2.out"
       });
-
-      tl.fromTo(
-        targetElement,
-        {
-          width: "40em",
-          height: "40em",
-          borderTopLeftRadius: "40em",
-          borderTopRightRadius: "40em",
-          borderBottomLeftRadius: "40em",
-          borderBottomRightRadius: "40em",
-          borderBottomWidth: "1.8em",
-          duration: 1,
-        },
-        {
-          width: "100vw",
-          height: "90vh",
-          borderTopLeftRadius: "0em",
-          borderTopRightRadius: "0em",
-          borderBottomLeftRadius: "0em",
-          borderBottomRightRadius: "0em",
-          borderBottomWidth: "0em",
-          duration: 1,
-        }
-      );
-    });
-  },
+    }, 1600); // 1.6 seconds delay
+  });
 });
+
 
 
 
@@ -108,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let counter = { value: 0 }; // Proxy object for animation
 
     gsap.to(counter, {
-      value: 215, // Target number
+      value: 1.5, // Target number
       duration: 3,
       ease: "power1.out",
       scrollTrigger: {
