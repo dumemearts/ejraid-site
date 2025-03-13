@@ -63,7 +63,7 @@ heroTl
 
 // 4️⃣ .sticky-circle-wrap pops up from the bottom as the last animation
 heroTl.from(
-  ".header-image-group",
+  ".hero-right-image-wrapper",
   {
     y: 50,
     opacity: 0,
