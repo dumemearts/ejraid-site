@@ -1,3 +1,79 @@
+// DONATION MODAL
+
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.registerPlugin();
+
+  let modals = document.querySelectorAll(".donation-modal");
+  let closeButtons = document.querySelectorAll(".donation-close");
+  let modalIndex = 0;
+  let interval;
+
+  function showModal(index) {
+    if (index >= modals.length) return; // Stop if no more modals
+    
+    let modal = modals[index];
+
+    gsap.to(modal, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      pointerEvents: "auto", // Ensure buttons are clickable
+    });
+
+    let closeTimeout = setTimeout(() => {
+      closeModal(modal);
+    }, 3000); // Auto-close after 3 seconds
+
+    modal.dataset.closeTimeout = closeTimeout;
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    
+    gsap.to(modal, {
+      opacity: 0,
+      y: 50,
+      duration: 0.6,
+      ease: "power2.in",
+      pointerEvents: "none", // Ensure items below are clickable
+      onComplete: () => {
+        clearTimeout(modal.dataset.closeTimeout);
+      }
+    });
+  }
+
+  function startModals() {
+    modalIndex = 0; // Reset index on refresh
+    function cycleModals() {
+      showModal(modalIndex);
+      modalIndex = (modalIndex + 1) % modals.length; // Loop back to the first modal
+    }
+
+    cycleModals(); // Show first modal immediately
+
+    interval = setInterval(() => {
+      cycleModals();
+    }, 10000); // Show next modal every 10 seconds
+  }
+
+  // Add event listeners to close buttons
+  closeButtons.forEach((btn, index) => {
+    btn.addEventListener("click", function () {
+      closeModal(modals[index]);
+    });
+  });
+
+  startModals();
+});
+
+
+
+
+
+
+
+
 // NAVLINK HOVER
 gsap.utils.toArray(".navbar-link-text").forEach((link) => {
 	link.addEventListener("mouseenter", () => {
